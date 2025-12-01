@@ -1,0 +1,113 @@
+//post login
+###
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "SA",
+  "password": "pass123"
+}
+
+### select role
+POST http://localhost:4000/api/auth/select-role
+Content-Type: application/json
+
+{
+  "id_users": 1,
+  "id_roles": 1
+}
+
+//generate role
+###
+POST http://localhost:4000/api/users/1/roles
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VycyI6MSwidXNlcm5hbWUiOiJTQSIsImlkX3JvbGVzIjoxLCJyb2xlX25hbWUiOiJBZG1pbiIsImlhdCI6MTc2NDU1MzI5MCwiZXhwIjoxNzY0NTU2ODkwfQ.D2pXXYPUVbksZcAomLyIfPOrq_SoL6J2704tvMxa99k
+
+{
+  "id_roles": 1,
+  "is_default": true
+}
+
+//logout
+###
+POST http://localhost:4000/api/auth/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VycyI6MSwidXNlcm5hbWUiOiJTQSIsImlkX3JvbGVzIjoyLCJyb2xlX25hbWUiOiJNYW5hZ2VyIiwiaWF0IjoxNzY0NTU0NjMwLCJleHAiOjE3NjQ1NTgyMzB9.n8bu_-PeEiY3NF-VbP8MUQlHVkpk1F3frm3anwBROc0
+
+{
+  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VycyI6MSwiaWF0IjoxNzY0NTU0NjMwLCJleHAiOjE3NjUxNTk0MzB9.L5hIDSJ9__Bo2CihtaQaGgXlpkSzq0gDkBFKioa-DKY"
+}
+
+### create users
+POST http://localhost:4000/api/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VycyI6MSwidXNlcm5hbWUiOiJTQSIsImlkX3JvbGVzIjoxLCJyb2xlX25hbWUiOiJBZG1pbiIsImlhdCI6MTc2NDQzODQ1MiwiZXhwIjoxNzY0NDQyMDUyfQ.OtRrp_ZVy5XiWW9_jmsHWjYTguqGhwfCSWlOEILLxzM
+
+
+{
+  "username": "Staff",
+  "password": "password123",
+  "full_name": "Staff New",
+  "email": "staff@example.com",
+  "is_active": "active"
+}
+
+//create role
+###
+POST http://localhost:4000/api/roles
+Content-Type: application/json
+
+{
+  "role_name": "Manager",
+  "description": "Manager level access",
+  "is_active": "active"
+}
+
+
+//mendapatkan info user yang sedang login
+###
+GET http://localhost:4000/api/auth/me
+Authorization: Baerar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VycyI6MSwidXNlcm5hbWUiOiJTQSIsImlkX3JvbGVzIjoxLCJyb2xlX25hbWUiOiJBZG1pbiIsImlhdCI6MTc2NDU1NTE4OSwiZXhwIjoxNzY0NTU4Nzg5fQ.detgA-o45K7CIolr9LKF5-HQdVl9SfIi7mzAVHDV7z0
+
+### create menu
+POST http://localhost:4000/api/menus
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VycyI6MSwidXNlcm5hbWUiOiJTQSIsImlkX3JvbGVzIjoxLCJyb2xlX25hbWUiOiJBZG1pbiIsImlhdCI6MTc2NDU1NjMyMiwiZXhwIjoxNzY0NTU5OTIyfQ.YAkJ8M6xnigkEnZlGWK6VbOSmRUp5kSzx5r2PDR4G0U
+
+{
+  "parent_id": null,
+  "menu_name": "Settings",
+  "order_number": 1,
+  "is_active": "active"
+}
+### update menu
+PUT http://localhost:4000/api/menus/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VycyI6MSwidXNlcm5hbWUiOiJTQSIsImlkX3JvbGVzIjoxLCJyb2xlX25hbWUiOiJBZG1pbiIsImlhdCI6MTc2NDU1NjMyMiwiZXhwIjoxNzY0NTU5OTIyfQ.YAkJ8M6xnigkEnZlGWK6VbOSmRUp5kSzx5r2PDR4G0U
+
+{
+  "parent_id": null,
+  "menu_name": "dashboard",
+  "order_number": 1,
+  "is_active": "active"
+}
+
+###
+GET http://localhost:4000/api/access
+Authorization: Baerar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VycyI6MSwidXNlcm5hbWUiOiJTQSIsImlkX3JvbGVzIjoxLCJyb2xlX25hbWUiOiJBZG1pbiIsImlhdCI6MTc2NDU1NjMyMiwiZXhwIjoxNzY0NTU5OTIyfQ.YAkJ8M6xnigkEnZlGWK6VbOSmRUp5kSzx5r2PDR4G0U
+
+###
+POST http://localhost:4000/api/access
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VycyI6MSwidXNlcm5hbWUiOiJTQSIsImlkX3JvbGVzIjoxLCJyb2xlX25hbWUiOiJBZG1pbiIsImlhdCI6MTc2NDU1NjMyMiwiZXhwIjoxNzY0NTU5OTIyfQ.YAkJ8M6xnigkEnZlGWK6VbOSmRUp5kSzx5r2PDR4G0U
+
+{
+  "id_roles": 1,
+  "id_menus": 1,
+  "can_view": true,
+  "can_create": true,
+  "can_update": true,
+  "can_delete": true
+}
+
+
